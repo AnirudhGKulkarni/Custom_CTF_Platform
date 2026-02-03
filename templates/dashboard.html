@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Dashboard - CTF Platform</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+		<style>
+			:root{--bg:#05060a;--card:#0f1116;--muted:rgba(210,225,240,0.65);--neon:#7bf6ff;--accent:#7c5cff}
+			body{background:#05060a;color:#eaf6ff;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;margin:0;padding:0}
+			.topbar{background:linear-gradient(90deg,rgba(124,92,255,0.06),transparent);backdrop-filter:blur(4px);border-bottom:1px solid rgba(124,92,255,0.06)}
+			.nav-brand{font-family:Orbitron,Inter;color:var(--neon);font-weight:700}
+			.container-dash{padding:2.5rem}
+			.card-glass{background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(124,92,255,0.08);backdrop-filter: blur(6px);border-radius:12px;color:var(--text, #eaf6ff)}
+			.score{background:linear-gradient(90deg,#0f1720,rgba(124,92,255,0.06));border-radius:12px;padding:1.25rem}
+			.challenge-card{transition:transform .22s ease,box-shadow .22s ease}
+			.challenge-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
+			.open-btn{background:linear-gradient(90deg,#7bf6ff,#7c5cff);color:#05060a;border:none}
+			.muted{color:var(--muted)}
+			/* Improve visibility for bootstrap muted text when used */
+			.text-muted{color:rgba(210,225,240,0.7) !important}
+			.card-glass h6, .card-glass h4, .card-glass h3, .card-glass p, .card-glass div {color: #eaf6ff}
+		</style>
+	</head>
+	<body>
+		<header class="topbar py-2">
+			<div class="container d-flex justify-content-between align-items-center">
+				<a class="nav-brand h5 mb-0" href="/">CTF Platform</a>
+				<div class="d-flex align-items-center">
+					<div class="text-end me-3">
+						<div class="small muted">Welcome</div>
+						<div class="fw-bold">{{ username }}</div>
+					</div>
+					<a class="btn btn-sm btn-outline-light" href="/logout">Logout</a>
+				</div>
+			</div>
+		</header>
+
+		<main class="container container-dash">
+			<div class="row g-4">
+				<div class="col-12 col-xl-4">
+					<div class="card card-glass p-3 h-100">
+						<div class="d-flex align-items-center justify-content-between">
+							<div>
+								<div class="text-muted small">Current Score</div>
+								<div class="h2 fw-bold">{{ score }}</div>
+							</div>
+							<div class="text-end">
+								<div class="muted small">Ranks & Progress</div>
+								<div class="mt-2"><a class="btn btn-sm open-btn" href="/leaderboard">Leaderboard</a></div>
+							</div>
+						</div>
+						<div class="mt-3 muted small">Keep solving to increase your score and climb the leaderboard.</div>
+					</div>
+				</div>
+
+				<div class="col-12 col-xl-8">
+					<div class="d-flex align-items-center justify-content-between mb-3">
+						<div>
+							<h4 class="mb-0">Challenges</h4>
+							<div class="muted small">Pick a challenge to open and submit flags</div>
+						</div>
+						<div><a class="btn btn-sm btn-outline-light" href="/new_challenge">Create</a></div>
+					</div>
+
+					<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+						{% for c in challenges %}
+						<div class="col">
+							<div class="card card-glass p-3 challenge-card h-100">
+								<div class="d-flex justify-content-between align-items-start">
+									<div>
+										<h6 class="mb-1">{{ c.name }}</h6>
+										<div class="muted small">{{ c.points }} pts</div>
+									</div>
+									<div class="text-end">
+										<a class="btn btn-sm open-btn" href="/challenge/{{ c.id }}">Open</a>
+									</div>
+								</div>
+								<div class="mt-3 muted small">Category: General</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Mini CTF Platform</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+		<style>
+			:root{--bg:#05060a;--card:#0b0d12;--muted:rgba(210,225,240,0.9);--neon:#7bf6ff;--accent:#7c5cff}
+			html,body{height:100%}
+			body{font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#05060a;color:#e6eef8;margin:0}
+			.cyber-grid{position:fixed;inset:0;z-index:0;overflow:hidden;background:radial-gradient(ellipse at 20% 10%, rgba(124,92,255,0.06), transparent 15%), linear-gradient(180deg, rgba(20,20,30,0.6), rgba(5,6,10,0.9));}
+			.cyber-grid::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 60px), repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 60px);transform:translateZ(0);animation: drift 20s linear infinite;opacity:0.6}
+			@keyframes drift{from{background-position:0 0,0 0}to{background-position:400px 400px, -400px -400px}}
+			.container-hero{position:relative;z-index:2;padding-top:6vh;padding-bottom:6vh}
+			.glass{background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(124,92,255,0.12);backdrop-filter:blur(6px);box-shadow:0 6px 30px rgba(2,6,23,0.6);border-radius:14px}
+			.logo{font-family:Orbitron,Inter,system-ui;font-weight:700;letter-spacing:1px;color:var(--neon)}
+			.cta-btn{border-radius:10px;padding:.7rem 1.1rem;font-weight:600}
+			.muted{color:var(--muted)}
+			.text-muted, .muted, .lead, .small{color:var(--muted) !important}
+			a.btn-outline-custom{border-color:rgba(124,92,255,0.22);color:var(--neon)}
+			a, .navbar-brand, h1, h5, h4, h3, h2{color:#eaf6ff}
+		</style>
+	</head>
+	<body>
+		<div class="cyber-grid"></div>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-transparent px-4" style="position:relative;z-index:3">
+			<div class="container-fluid">
+				<a class="navbar-brand logo" href="/">CTF Platform</a>
+				<div class="d-flex">
+					<a class="btn btn-outline-custom me-2 cta-btn" href="/login">Login</a>
+					<a class="btn btn-primary cta-btn" href="/register" style="background:linear-gradient(90deg,#7bf6ff,#7c5cff);border:none;">Register</a>
+				</div>
+			</div>
+		</nav>
+
+		<main class="container container-hero">
+			<div class="row align-items-center">
+				<div class="col-lg-7 mb-4">
+					<div class="p-5 glass">
+						<h1 class="display-5 fw-bold">Modern Mini CTF</h1>
+						<p class="lead muted">A lightweight Capture The Flag platform with challenges, scoring and an elegant cyber UI. Jump in, solve challenges, and climb the leaderboard.</p>
+						<div class="mt-4">
+							  <a class="btn btn-lg btn-primary" href="/dashboard" style="background:linear-gradient(90deg,#7bf6ff,#7c5cff);border:none;">Enter Dashboard</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-5">
+					<div class="glass p-4">
+						<h5 class="mb-3">Getting Started</h5>
+						<ul class="list-unstyled muted small">
+							<li>• Create an account or login</li>
+							<li>• Attempt challenges and submit flags</li>
+							<li>• Track your score and progress</li>
+						</ul>
+						<div class="mt-3 text-muted small">Built with Bootstrap 5 • Responsive • Cyber theme</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>

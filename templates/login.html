@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Login - CTF Platform</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+		<style>
+			:root{--bg:#04050a;--glass:rgba(255,255,255,0.03);--accent:#7c5cff;--neon:#7bf6ff;--muted:rgba(220,235,250,0.9)}
+			body{min-height:100vh;background:linear-gradient(135deg,#05060a 0%,#091022 50%);color:#eaf6ff;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+			.auth-bg{position:fixed;inset:0;z-index:0;background-image:radial-gradient(circle at 10% 10%, rgba(124,92,255,0.06), transparent 8%), linear-gradient(180deg, rgba(2,6,23,0.6), rgba(5,6,10,0.9));}
+			.auth-bg::after{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 60px), repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 60px);opacity:0.25}
+			.card-glass{background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(124,92,255,0.12);backdrop-filter:blur(6px);box-shadow:0 10px 30px rgba(2,6,23,0.6);border-radius:12px}
+			.form-control:focus{box-shadow:0 0 18px rgba(123,88,255,0.12);border-color:rgba(123,88,255,0.6)}
+			.neon-btn{background:linear-gradient(90deg,#7bf6ff,#7c5cff);color:#05060a;border:none}
+			.text-muted, .muted, .form-label, label, .small{color:var(--muted) !important}
+			.card-glass, h3, p, .form-label, .form-control{color:#eaf6ff}
+			a{color:var(--neon)}
+			input::placeholder{color:rgba(235,245,255,0.5)}
+		</style>
+	</head>
+	<body>
+		<div class="auth-bg"></div>
+		<div class="d-flex align-items-center justify-content-center" style="min-height:100vh;position:relative;z-index:2">
+			<div class="card card-glass p-4" style="width:420px">
+				<div class="text-center mb-3">
+					<h3 style="font-family:Orbitron,Inter;letter-spacing:1px;margin-bottom:0;color:#7bf6ff">CTF Platform</h3>
+					<p class="text-muted small">Login to continue</p>
+				</div>
+				<form method="POST" action="">
+					<div class="mb-3">
+						<label class="form-label text-muted">Username</label>
+						<input name="username" type="text" class="form-control form-control-lg bg-transparent text-white border-1" required>
+					</div>
+					<div class="mb-3">
+						<label class="form-label text-muted">Password</label>
+						<input name="password" type="password" class="form-control form-control-lg bg-transparent text-white border-1" required>
+					</div>
+					<div class="d-grid mt-3">
+						<button id="loginBtn" type="submit" class="btn neon-btn btn-lg">Login</button>
+					</div>
+				</form>
+				<div class="text-center mt-3 small text-muted">No account? <a href="/register" style="color:var(--neon)">Register</a></div>
+			</div>
+		</div>
+
+		<script>
+			document.querySelector('form').addEventListener('submit',function(e){
+				const btn=document.getElementById('loginBtn');
+				btn.disabled=true;btn.innerText='Signing in...';
+			});
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>
